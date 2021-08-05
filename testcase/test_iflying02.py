@@ -11,7 +11,7 @@ from APIbase.base_request import send
 
 logger = get_logger()
 class TestIflying02():
-
+    #len(requsts_data)+2
     requsts_data = read_excel(iflying_data, "api")
     row = list(range(2, len(requsts_data)+2))
     datas = list(zip(requsts_data, row))
@@ -42,6 +42,7 @@ class TestIflying02():
         body02 = {}
         assert_data = data["assert_data"]
         assert_type = data["assert_type"]
+        pre_sql = data["pre_sql"]
 
         if data["headers"]:
             headers = eval(data["headers"])
@@ -55,6 +56,30 @@ class TestIflying02():
         else:
             body = body02
 
+        if pre_sql:
+            pre_sql = eval(pre_sql)
+            flag = pre_sql["flag"]
+            env = pre_sql["env"]
+            db = pre_sql["db"]
+            key = pre_sql["key"]
+            sql = str(pre_sql["sql"]).replace("$merchant_id",self.merchantId)
+            sql = eval(sql)
+            db_res = con_mysql(flag,env,db,key,sql)
+            if key in ("selectall","selectone"):
+                # if key=="selectall":
+                #     db_res = db_res[0][0]
+                # else:
+                #     db_res = db_res[0][0]
+                logger.info(f"__________db_res:{db_res}")
+                # value = list(db_res.values())
+                value01= list(db_res[0][0].values())[0]
+                if str(body).find("$01")!=-1:
+                    body = str(body).replace("$01",str(value01))
+                if str(body).find("$02")!=-1:
+                    value02 = list(db_res[1][0].values())[0]
+                    body = body.replace("$02",str(value02))
+                # print(type(body))
+                body = eval(body)
         logger.info(body)
         res = None
         if method=="post":
@@ -83,4 +108,10 @@ class TestIflying02():
     @pytest.mark.parametrize("data,row",datas)
     def testall(self,data,row):
         self.common(data,row)
+
+
+
+    def hander_presql(self,body,presql):
+        pass
+
 

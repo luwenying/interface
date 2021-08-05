@@ -89,7 +89,11 @@ print(list(res3["error_response"].items()))
 # print(assert_result)
 # if assert_data4 in res4:
 #     print("pass")
-
+kk = sql = ["select id role_id from merchant_role where merchant_id='$merchant_id';","select id from merchant_user_role_relate where merchant_id='$merchant_id';"]
+if str(kk).find("$01"):
+    kk = str(kk).replace("$merchant_id","kk")
+kk = eval(kk)
+print(kk)
 
 if __name__=="__main__":
     # pytest.main(["-sv","pra.py"])
