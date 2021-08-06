@@ -95,6 +95,9 @@ if str(kk).find("$01"):
 kk = eval(kk)
 print(kk)
 
+data = {"data":{"groupTags":[{"id":"etcoN-EQAATl02nkGFSHZvIgfjTTPg6Q","name":"奥运01","tagType":"group"},{"id":"etcoN-EQAAKcE61ek0Rl_wrbXJWTWZdA","name":"兵乓球","tagType":"tag","order":0},{"id":"etcoN-EQAA0THa64z9YhJPqGnu4ARr1A","name":"羽毛球","tagType":"tag","order":1}]}}
+
+
 if __name__=="__main__":
     # pytest.main(["-sv","pra.py"])
     pass

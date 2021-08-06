@@ -96,7 +96,7 @@ class TestIflying02():
         logger.info(f"——————————————————断言的assert_type:{assert_type}")
         logger.info(f"——————————————————assert_data:{assert_data}")
         assert_result = assert_data in assert_type
-        print(assert_result)
+        # print(assert_result)
         if assert_result:
             write_into_excel(iflying_data, "api", row, 13, "pass")
             assert True

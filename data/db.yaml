@@ -1,0 +1,33 @@
+iflying:
+  dev:
+    host: '192.168.18.232'
+    username: rw
+    password: zlsdRW@2019
+    port: 3314
+
+  sit:
+    host: '192.168.18.231'
+    username: dba
+    password: zlsdDBA@2019
+    port: 3314
+
+merchant_center:
+  dev:
+    host: '192.168.14.211'
+    username: rw
+    password: zlsdRW@2019
+    db: merchant
+    port: 3306
+
+  sit:
+    host: '192.168.18.211'
+    username: test
+    password: zlsdDBA@2019
+    port: 3306
+
+km:
+  dev:
+    host: '192.168.14.211'
+    username: rw
+    password: zlsdRW@2019
+    port: 3306
